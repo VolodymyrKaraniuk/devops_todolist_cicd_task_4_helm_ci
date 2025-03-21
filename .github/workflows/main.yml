@@ -92,9 +92,10 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./helm-charts/todoapp
+        working-directory: helm-charts/todoapp
     needs: python-ci
     steps:
+      - run: ls
       - uses: actions/download-artifact@v4
         with:
           name: helm-artifacts
