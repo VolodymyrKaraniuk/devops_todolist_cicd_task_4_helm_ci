@@ -90,9 +90,6 @@ jobs:
 
   helm-ci:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: helm-charts/todoapp
     needs: python-ci
     steps:
       - run: ls
