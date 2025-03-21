@@ -96,3 +96,21 @@ jobs:
         with:
           name: helm-artifacts
           path: .
+      - name: Set Up Helm
+        uses: azure/setup-helm@v4.2.0
+
+      - name: Lint helm
+        run: helm lint ./helm-charts/todoapp/
+
+      - name: Template Helm
+        run: helm template todoapp ./helm-charts/todoapp/ -f ./helm-charts/todoapp/values.yaml
+
+      - name: Package Helm
+        run: helm package ./helm-charts/todoapp
+
+      - name: Upload helm Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: helm-package
+          path: ./*.tgz
+
